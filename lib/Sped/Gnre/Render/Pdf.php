@@ -50,7 +50,8 @@ class Pdf
     public function create(Html $html)
     {
         $dompdf = $this->getDomPdf();
-        $dompdf->load_html($html->getHtml());
+        // Dompdf >= 0.7 / 1.x / 3.x: loadHtml (camelCase). load_html was 0.6 API.
+        $dompdf->loadHtml($html->getHtml());
         $dompdf->render();
 
         return $dompdf;
